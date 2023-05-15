@@ -1,0 +1,40 @@
+--Create a bakery store database
+
+create table pastries ( id INTEGER PRIMARY KEY, tipo text, flavor text, quantity integer, price integer);
+
+insert into pastries values
+    (1, "cake", "orange", 10, 15);
+insert into pastries values
+    (2, "cake", "vanilla", 5, 15);
+insert into pastries values
+    (3, "cake", "chocolate", 6, 15);
+insert into pastries values
+    (4, "cake", "blueberries", 4, 20);
+insert into pastries values
+    (5, "cake", "banana bread", 3, 15);
+insert into pastries values
+    (6, "cake", "pineaple", 2, 20);
+insert into pastries values
+    (7, "cookies", "oatmeal raisins", 10, 15);
+insert into pastries values
+    (8, "cookies", "choco chips", 10, 15);
+insert into pastries values
+    (9, "cookies", "double choco chips", 10, 15);
+insert into pastries values
+    (10, "cookies", "orange", 10, 15);
+insert into pastries values
+    (11, "cookies", "carrots", 10, 15);
+insert into pastries values
+    (12, "tres leches", "vanilla", 12, 10);
+insert into pastries values
+    (13, "tres leches", "chocolate", 13, 10);
+insert into pastries values
+    (14, "spread", "nutella", 10, 15);
+insert into pastries values
+    (15, "spread", "kinder", 10, 15);
+
+--display the database ordered by price. 
+select * from pastries order by price;
+
+-- what is the inventory for type of product
+select tipo, sum (quantity) from pastries group by tipo;

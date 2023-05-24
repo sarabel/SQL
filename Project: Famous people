@@ -1,0 +1,194 @@
+/* Create table about the people and what they do here */
+
+/* Table to store persons information */
+CREATE TABLE persons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT,
+    birthday TEXT,
+    country_birth TEXT
+);
+
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Shakira','02/02/1977','Colombia');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Gerald Pique','02/02/1987','Colombia');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Marc Antonhy','09/16/1968','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Jennifer Lopez','07/24/1969','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Nadia Ferreira','05/10/1999','Uruguay');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Ben Affleck','08/15/1972','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Angelina Jolie','06/04/1975','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Brad Pitt','12/18/1963','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Justin Timberlake','01/31/1981','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Jessica Biel','03/03/1982','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('J.K. Rowling','07/31/1965','UK');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Zadie Smith','10/25/1975','England');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Gabriel Garcia Marquez','03/06/1927','Colombia');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Mario Vargas Llosa','03/28/1936','Peru');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Beyonce','09/04/1981','USA');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Rihanna','02/20/1988','Barbados');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Bizarrap','08/29/1998','Argentina');
+INSERT INTO persons (full_name,birthday,country_birth) VALUES ('Maluma','01/28/1994','Colombia');
+
+    
+/* Table to store professions */
+CREATE TABLE profession (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT);
+    
+INSERT INTO profession (name) VALUES ('Actor');
+INSERT INTO profession (name) VALUES ('Actress');
+INSERT INTO profession (name) VALUES ('Writer');
+INSERT INTO profession (name) VALUES ('Singer');
+INSERT INTO profession (name) VALUES ('Soccer Player');
+INSERT INTO profession (name) VALUES ('Songwriter');
+INSERT INTO profession (name) VALUES ('Model');
+INSERT INTO profession (name) VALUES ('Dancer');
+/*Table to store person and their professions*/
+CREATE TABLE person_profession (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_person INTEGER,
+    id_profession INTEGER);
+
+INSERT INTO person_profession (id_person,id_profession) VALUES (1,4);  
+INSERT INTO person_profession (id_person,id_profession) VALUES (1,6);
+INSERT INTO person_profession (id_person,id_profession) VALUES (2,5);  
+INSERT INTO person_profession (id_person,id_profession) VALUES (3,1);  
+INSERT INTO person_profession (id_person,id_profession) VALUES (3,4);  
+INSERT INTO person_profession (id_person,id_profession) VALUES (3,6);
+INSERT INTO person_profession (id_person,id_profession) VALUES (4,2);  
+INSERT INTO person_profession (id_person,id_profession) VALUES (4,4);
+INSERT INTO person_profession (id_person,id_profession) VALUES (4,8);
+INSERT INTO person_profession (id_person,id_profession) VALUES (5,7);
+INSERT INTO person_profession (id_person,id_profession) VALUES (6,1);
+INSERT INTO person_profession (id_person,id_profession) VALUES (7,2);
+INSERT INTO person_profession (id_person,id_profession) VALUES (8,1);
+INSERT INTO person_profession (id_person,id_profession) VALUES (9,1);
+INSERT INTO person_profession (id_person,id_profession) VALUES (9,4);
+INSERT INTO person_profession (id_person,id_profession) VALUES (9,6);
+INSERT INTO person_profession (id_person,id_profession) VALUES (10,2);
+INSERT INTO person_profession (id_person,id_profession) VALUES (11,3);
+INSERT INTO person_profession (id_person,id_profession) VALUES (12,3);
+INSERT INTO person_profession (id_person,id_profession) VALUES (13,3);
+INSERT INTO person_profession (id_person,id_profession) VALUES (14,3);
+INSERT INTO person_profession (id_person,id_profession) VALUES (15,2);
+INSERT INTO person_profession (id_person,id_profession) VALUES (15,4);
+INSERT INTO person_profession (id_person,id_profession) VALUES (15,6);
+INSERT INTO person_profession (id_person,id_profession) VALUES (15,8);
+INSERT INTO person_profession (id_person,id_profession) VALUES (16,2);
+INSERT INTO person_profession (id_person,id_profession) VALUES (16,4);
+
+/* Table to store who are couples, and their status integer status =0 divorce, status=1 married, status=2 in a romantic relationship */
+CREATE TABLE couples(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person1_id INTEGER,
+    person2_id INTEGER,
+    status INTEGER
+    );
+
+INSERT INTO couples (person1_id,person2_id,status) VALUES (1,2,0) ;
+INSERT INTO couples (person1_id,person2_id,status) VALUES (3,4,0) ;
+INSERT INTO couples (person1_id,person2_id,status) VALUES (4,6,1) ;
+INSERT INTO couples (person1_id,person2_id,status) VALUES (3,5,1) ;
+INSERT INTO couples (person1_id,person2_id,status) VALUES (9,10,1) ;
+INSERT INTO couples (person1_id,person2_id,status) VALUES (7,8,0) ;
+    
+/* Table to store the type of product people make */
+CREATE TABLE product_type(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+    );
+
+INSERT INTO product_type (name) VALUES ('Movie');
+INSERT INTO product_type (name) VALUES ('Song');
+INSERT INTO product_type (name) VALUES ('Book');
+    
+/* Information about every production */
+CREATE TABLE production(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_product_type INTEGER,
+    id_person INTEGER,
+    name TEXT,
+    year_released INTEGER,
+    language TEXT,
+    colaboration_id INTEGER
+    );
+    
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,1,'Bzrp Music Sessions, Vol. 53',2023,'Spanish',17);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,1,'Te Felicito',2022,'Spanish',18);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,1,'Beautiful Liar',2006,'English',15);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,1,"Can't Remember to forget you ",2014,'English',16);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,3,'Y hubo Alguien',1997,'Spanish',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,4,'No Me Ames',1999,'Spanish',3);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,4,'Marry Me',2022,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,6,'SHAKESPEARE IN LOVE',1998,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,6,'Air',2023,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,7,'Maleficent ',2014,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,7,'Mr. and Mrs. Smith',2005,'English',8);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,8,'Mr. and Mrs. Smith',2005,'English',7);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,9,'Friends with Benefits',2011,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (2,9,"Can't Stop the Feeling!",2016,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,10,"Candy",2022,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (1,10,"Next",2007,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,11,"Harry Potter and the Sorcerer's Stone",1997,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,11,"Harry Potter and the Deathly Hallows",2007,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,12,"Star Wars Ultimate Factivity Collection",2014,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,12,"White Teeth",2000,'English',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,13,"Cien Años de soledad ",1967,'Spanish',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,13,"El amor en los tiempos del Cólera",1985,'Spanish',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,14,"La ciudad y los perros ",1962,'Spanish',0);
+INSERT INTO production (id_product_type,id_person,name,year_released,language,colaboration_id) VALUES (3,14,"La casa verde",1965,'Spanish',0);
+
+SELECT * FROM persons;  
+SELECT * FROM profession;
+SELECT * FROM person_profession;
+SELECT * FROM couples;  
+SELECT * FROM product_type;
+SELECT * FROM production;
+
+/*WHAT PRODUCTIONS HAVE EACH FAMOUS PERSON
+Showing name of the person, type of product, name of the production and name of the person colaborating in case it exists*/
+
+SELECT a.full_name AS Name,d.name AS 'Product Type',b.name AS Name ,
+    CASE
+        WHEN b.colaboration_id=0 THEN ""
+        ELSE c.full_name
+        END
+    AS 'Colaboration With'
+FROM persons AS a
+JOIN production AS b
+ON b.id_person = a.id
+JOIN product_type AS d
+ON b.id_product_type = d.id
+LEFT JOIN persons AS c
+ON b.colaboration_id = c.id
+ORDER BY a.full_name;
+
+/* Love relationships status between famous*/
+
+SELECT a.full_name AS Name, c.full_name AS Name, 
+    CASE
+        WHEN b.status=0 THEN 'Divorced'
+        WHEN b.status=1 THEN 'Married'
+        WHEN b.status=2 THEN 'In a relationship'
+        ELSE ''
+    END AS STATUS
+FROM persons AS a
+JOIN couples b
+ON b.person1_id = a.id
+JOIN persons AS c
+ON b.person2_id = C.id
+GROUP BY b.person1_id, b.person2_id;
+
+/*INFORMATION ABOUT PERSONS*/
+SELECT a.full_name AS Name, a.birthday, a.country_birth AS Country, COUNT (b.id) AS 'Total of Productions'
+FROM persons AS a
+LEFT JOIN production AS b
+ON b.id_person = a.id 
+GROUP BY a.id;
+
+/*Professions related to each person*/
+SELECT a.full_name, c.name
+FROM persons AS a
+JOIN person_profession AS b
+ON a.id = b.id_person
+JOIN profession AS c 
+ON c.id  = b.id_profession;
+

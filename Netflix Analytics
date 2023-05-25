@@ -1,0 +1,44 @@
+--#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data. 
+
+--Try to figure out which attribute you'd use to be able to join the two tables
+--Write your SQL, select some columns from both tables
+SELECT title.show_id, title.type, title.title, people.director, people.cast
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON title.show_id = people.show_id;
+
+--How many movie titles are there in the database? 
+SELECT COUNT(*)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+WHERE title.type='Movie';
+
+--When was the most recent batch of tv shows and/or movies added to the database?
+SELECT max(date(title.date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title;
+
+--List all the movies and tv shows in alphabetical order.
+SELECT title.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+ORDER BY title.title ASC;
+
+--Who was the Director for the movie Bright Star?
+SELECT people.director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON title.show_id = people.show_id
+WHERE title = 'Bright Star';
+
+--What is the oldest movie in the database and what year was it made?
+SELECT title.title, title.release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+WHERE type='Movie'
+ORDER BY release_year ASC
+LIMIT 1;
+
+SELECT title, release_year 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+AND release_year <= 
+(SELECT MIN(release_year) 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'); 

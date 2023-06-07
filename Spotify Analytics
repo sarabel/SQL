@@ -81,12 +81,28 @@ WHERE track_name LIKE '%feat%'
         OR track_name LIKE '%WITH %' ;
         
 -- How many artists  have more than one song 
-SELECT sum (artist_name)
-FROM BIT_DB.Spotifydata
-GROUP BY artist_name
-HAVING artist_name IN(
+WITH tempTable AS(
     SELECT artist_name
-    FROM BIT_DB.Spotifydata
+    FROM Spotifydata
     GROUP BY artist_name
     HAVING count(track_id) > 1
-    );
+)
+
+SELECT COUNT(artist_name)
+FROM tempTable;
+    
+-- Calculate the average popularity for the artists in the Spotify data table. 
+--Then, for every artist with an average popularity of 90 or above, show their name, 
+--their average popularity, and label them as a “Top Star”.
+
+WITH tempTable AS(
+    SELECT artist_name, AVG(popularity) avgPopularity
+    FROM Spotifydata
+    GROUP BY artist_name
+    ORDER BY 2 DESC
+)
+SELECT artist_name, avgPopularity, 'TOP START' TAG
+FROM tempTable
+WHERE avgPopularity >= 90;
+
+

@@ -89,6 +89,16 @@ FROM superstore
 GROUP BY category, item_name
 ORDER BY category,expensive_item_by_categ DESC;
 
+# how many Air Purifier	are in stock
+SELECT stock_quantity
+FROM superstore
+WHERE item_name = "Air Purifier";
+
+# stock by product in category Electronics
+SELECT item_name, stock_quantity
+FROM superstore
+WHERE category = "Electronics"
+ORDER BY stock_quantity;
 
 # Write your own SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies".
 
